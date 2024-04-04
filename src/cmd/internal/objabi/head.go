@@ -49,6 +49,7 @@ const (
 	Hwasip1
 	Hwindows
 	Haix
+	Hcygwin
 )
 
 func (h *HeadType) Set(s string) error {
@@ -77,6 +78,8 @@ func (h *HeadType) Set(s string) error {
 		*h = Hwasip1
 	case "windows":
 		*h = Hwindows
+	case "cygwin":
+		*h = Hcygwin
 	default:
 		return fmt.Errorf("invalid headtype: %q", s)
 	}
@@ -109,6 +112,8 @@ func (h HeadType) String() string {
 		return "wasip1"
 	case Hwindows:
 		return "windows"
+	case Hcygwin:
+		return "cygwin"
 	}
 	return fmt.Sprintf("HeadType(%d)", h)
 }
